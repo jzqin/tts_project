@@ -49,5 +49,6 @@ def process_video(video_url):
     
 if __name__ == '__main__':
     #app.run()
-    video_url = 'https://www.youtube.com/watch?v=oqpfgUQET6A&ab_channel=HyprMX'
+    #video_url = 'https://www.youtube.com/watch?v=oqpfgUQET6A&ab_channel=HyprMX'
+    video_url = 'https://www.youtube.com/watch?v=FAyKDaXEAgc&ab_channel=DanielThrasher'
     process_video(video_url)

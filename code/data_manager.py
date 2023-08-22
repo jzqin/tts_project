@@ -2,6 +2,8 @@ import os
 import whisper
 import time
 
+# base class for processing videos. It handles all data and file paths related to data and
+# the intermediaries of the translation pipeline
 class Video():
     def __init__(self, video_url, download_path='../data', download_name='video.mp4'):
         self.video_url = video_url
