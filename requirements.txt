@@ -1,0 +1,87 @@
+appnope==0.1.3
+asttokens==2.2.1
+backcall==0.2.0
+bidict @ file:///tmp/build/80754af9/bidict_1607541094382/work
+Brotli @ file:///Users/ec2-user/ci_py311/brotli-split_1678379922007/work
+cachetools==4.2.4
+certifi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2emnmf1qow/croot/certifi_1690232232440/work/certifi
+chardet @ file:///Users/ec2-user/ci_py311/chardet_1678326102860/work
+charset-normalizer==3.2.0
+click @ file:///Users/ec2-user/ci_py311/click_1678318124837/work
+decorator==5.1.1
+elevenlabs==0.2.24
+executing==1.2.0
+ffmpeg==1.4
+filelock==3.12.2
+Flask @ file:///Users/ec2-user/ci_py311/flask_1678380788105/work
+Flask-SocketIO @ file:///Users/ec2-user/ci_py311/flask-socketio_1678411926790/work
+fsspec==2023.6.0
+google-api-core==1.34.0
+google-auth==1.35.0
+google-cloud-core==1.7.3
+google-cloud-translate==2.0.1
+googleapis-common-protos==1.60.0
+grpcio==1.57.0
+grpcio-status==1.48.2
+huggingface-hub==0.16.4
+idna==3.4
+ipython==8.14.0
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+jedi==0.19.0
+Jinja2 @ file:///Users/ec2-user/ci_py311/jinja2_1678317138271/work
+joblib @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dfriz0qjwt/croot/joblib_1685113297703/work
+llvmlite==0.40.1
+MarkupSafe @ file:///Users/ec2-user/ci_py311/markupsafe_1678316973889/work
+matplotlib-inline==0.1.6
+mkl-fft==1.3.6
+mkl-random @ file:///Users/ec2-user/mkl/mkl_random_1682994911338/work
+mkl-service==2.4.0
+more-itertools==10.1.0
+mpmath==1.3.0
+mutagen==1.46.0
+networkx==3.1
+numba==0.57.1
+numpy==1.24.4
+openai-whisper @ git+https://github.com/openai/whisper.git@e8622f9afc4eba139bf796c210f5c01081000472
+packaging==23.1
+parso==0.8.3
+pexpect==4.8.0
+pickleshare==0.7.5
+prompt-toolkit==3.0.39
+proto-plus==1.22.3
+protobuf==3.20.3
+ptyprocess==0.7.0
+pure-eval==0.2.2
+pyasn1==0.5.0
+pyasn1-modules==0.3.0
+pycryptodomex==3.18.0
+pydantic==1.10.12
+pydub==0.25.1
+Pygments==2.16.1
+PySocks @ file:///Users/ec2-user/ci_py311/pysocks_1678315868424/work
+python-engineio @ file:///tmp/build/80754af9/python-engineio_1618814346232/work
+python-socketio @ file:///tmp/build/80754af9/python-socketio_1624540179952/work
+PyYAML==6.0.1
+regex @ file:///Users/ec2-user/ci_py311/regex_1678394018661/work
+requests==2.31.0
+rsa==4.9
+safetensors==0.3.2
+scikit-learn @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_815xfdnpoa/croot/scikit-learn_1680198756636/work
+scipy @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2eyzr35lpl/croot/scipy_1691606691057/work/dist/scipy-1.11.1-cp311-cp311-macosx_10_9_x86_64.whl#sha256=4821e79fc8a351c3e00884b92f9b9ab65b3e10ffacc5c6036ef47a7e52a7fcce
+sentencepiece @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_16g35tb1w_/croot/sentencepiece_1684523588913/work/python
+six==1.16.0
+stack-data==0.6.2
+sympy==1.12
+threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
+tiktoken==0.3.3
+tokenizers==0.13.3
+torch==2.0.1
+tqdm @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_03acd6t6ca/croot/tqdm_1679561866522/work
+traitlets==5.9.0
+transformers==4.31.0
+typing_extensions==4.7.1
+urllib3==1.26.16
+wcwidth==0.2.6
+websockets==11.0.3
+Werkzeug @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_fegt3z60s3/croot/werkzeug_1679489762631/work
+yt-dlp==2023.7.6
