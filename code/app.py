@@ -3,13 +3,13 @@ from models import TranscribeModel, T5TranslateModel, GTranslateModel, TTSModel
 from data_manager import Video
 import os
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 # @app.before_first_reqeust
-def setup():
+def setup(language):
     transcribe_model = TranscribeModel()
     # translate_model = T5TranslateModel(size='t5-base')
-    translate_model = GTranslateModel()
+    translate_model = GTranslateModel(to_language=language)
     tts_model = TTSModel()
     # delete this line later?
     return transcribe_model, translate_model, tts_model
@@ -18,11 +18,12 @@ def setup():
 #def index():
 #    return render_template('index.html')
 
-# @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         user_input = request.form['user_input']
-        output_video_path = process_video(user_input)
+        language = request.form['language']
+        output_video_path = process_video(user_input, language)
         videos_dir = './static/videos'
         final_path = os.path.join(videos_dir, 'output.mp4')
         os.system('mv {} {}'.format(output_video_path, final_path))
@@ -35,12 +36,12 @@ def submit():
     final_video = process_video(video_url)
     return '{}'.format(video_url)
 
-def process_video(video_url):
+def process_video(video_url, language):
     video = Video(video_url)
     video_path = video.download()
     audio_path = video.extract_audio()
     muted_video_path = video.extract_video()
-    transcribe_model, translate_model, tts_model = setup()
+    transcribe_model, translate_model, tts_model = setup(language)
     text = video.extract_text(transcribe_model)
     translated_text = video.translate_text(translate_model)
     translated_audio_path = video.translated_audio(tts_model)
@@ -48,7 +49,7 @@ def process_video(video_url):
     return combined_video_and_audio_path
     
 if __name__ == '__main__':
-    #app.run()
+    app.run()
     #video_url = 'https://www.youtube.com/watch?v=oqpfgUQET6A&ab_channel=HyprMX'
-    video_url = 'https://www.youtube.com/watch?v=FAyKDaXEAgc&ab_channel=DanielThrasher'
-    process_video(video_url)
+    #video_url = 'https://www.youtube.com/watch?v=FAyKDaXEAgc&ab_channel=DanielThrasher'
+    #process_video(video_url, 'fr')

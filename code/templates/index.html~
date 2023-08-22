@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Selector</title>
+  </head>
+  <body>
+    <h1>Video Selector</h1>
+    <form method="POST" action="/process_form">
+      <label for="user_input">Enter Youtube Video URL:</label>
+      <input type="text" id="user_input" name="user_input">
+      <br>
+      <label for="language">Enter language:</label>
+      <input type="text" id="other_input" name="language">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+    {% if selected_video %}
+    <h2>Selected Video:</h2>
+    <video width="640" height="360" controls>
+      <source src="{{ url_for('static', filename='videos/' ~ selected_video) }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    {% endif %}
+  </body>
+</html>
