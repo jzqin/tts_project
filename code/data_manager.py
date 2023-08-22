@@ -1,5 +1,6 @@
 import os
 import whisper
+import time
 
 class Video():
     def __init__(self, video_url, download_path='../data', download_name='video.mp4'):
@@ -14,8 +15,16 @@ class Video():
         self.translated_video_file = None
         
     def download(self):
-        os.system('yt-dlp -P {} -o {} {}'.format(self.download_path, self.video_file, self.video_url))
-        return os.path.join(self.download_path, self.video_file)
+        os.system('yt-dlp -f mp4 -P {} -o {} {}'.format(self.download_path, self.video_file, self.video_url))
+        # wait for file to finish download
+        video_path = os.path.join(self.download_path, self.video_file)
+        n_wait = 0
+        while not os.path.exists(video_path):
+           time.sleep(1)
+           n_wait += 1
+           if n_wait > 100:
+               raise RuntimeError('Video could not download in time')
+        return 
 
     def extract_audio(self, audio_file='audio.mp3'):
         self.audio_file = audio_file
@@ -71,3 +80,4 @@ class Video():
         full_translated_audio_path = os.path.join(self.download_path, self.translated_audio_file)
         full_translated_video_path = os.path.join(self.download_path, self.translated_video_file)
         os.system('ffmpeg -i {} -i {} -c:v copy -c:a aac -strict experimental {}'.format(full_muted_video_path, full_translated_audio_path, full_translated_video_path))
+        return full_translated_video_path
