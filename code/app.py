@@ -3,7 +3,7 @@ from models import TranscribeModel, T5TranslateModel, GTranslateModel, TTSModel
 from data_manager import Video
 import os
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # @app.before_first_reqeust
 def setup():
@@ -18,7 +18,7 @@ def setup():
 #def index():
 #    return render_template('index.html')
 
-@app.route('/', methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         user_input = request.form['user_input']
@@ -48,6 +48,6 @@ def process_video(video_url):
     return combined_video_and_audio_path
     
 if __name__ == '__main__':
-    app.run()
-    #video_url = 'https://www.youtube.com/watch?v=oqpfgUQET6A&ab_channel=HyprMX'
-    #process_video(video_url)
+    #app.run()
+    video_url = 'https://www.youtube.com/watch?v=oqpfgUQET6A&ab_channel=HyprMX'
+    process_video(video_url)

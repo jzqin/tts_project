@@ -10,7 +10,6 @@ class Video():
         self.audio_file = None
         self.muted_video_file = None
         self.text = None
-        self.translated_text = None
         self.translated_audio_file = None
         self.translated_video_file = None
         
@@ -30,14 +29,14 @@ class Video():
         self.audio_file = audio_file
         full_video_path = os.path.join(self.download_path, self.video_file)
         full_audio_path = os.path.join(self.download_path, self.audio_file)
-        os.system('ffmpeg -i {} -vn -q:a 0 -map a {}'.format(full_video_path, full_audio_path))
+        os.system('ffmpeg -i {} -vn -q:a 0 -map a -y {}'.format(full_video_path, full_audio_path))
         return full_audio_path
 
     def extract_video(self, muted_video_file='video_no_audio.mp4'):
         self.muted_video_file = muted_video_file
         full_video_path = os.path.join(self.download_path, self.video_file)
         full_muted_video_path = os.path.join(self.download_path, self.muted_video_file)
-        os.system('ffmpeg -i {} -c:v copy -an {}'.format(full_video_path, full_muted_video_path))
+        os.system('ffmpeg -i {} -c:v copy -an -y {}'.format(full_video_path, full_muted_video_path))
         return full_muted_video_path
 
     def extract_text(self, model):
@@ -55,18 +54,19 @@ class Video():
         if not self.text:
             raise RuntimeError('Cannot translate text before it has been extracted from video.')
 
-        translated_text = model.infer(self.text)
-        self.translated_text = translated_text
+        for segment in self.text:
+            translated_text = model.infer(segment['text'])
+            segment['translation'] = translated_text
 
-        return translated_text
+        return self.text
 
     def translated_audio(self, model, translated_audio_file='translated_audio.mp3'):
-        if not self.translated_text:
+        if not self.text[0]['translation']:
             raise RuntimeError('Cannot dub translated audio before original text has been translated.')
 
         self.translated_audio_file = translated_audio_file
         full_audio_path = os.path.join(self.download_path, self.translated_audio_file)
-        translated_audio = model.infer(self.translated_text, full_audio_path)
+        translated_audio = model.infer(self.text, full_audio_path)
         
         return full_audio_path
 
@@ -79,5 +79,5 @@ class Video():
         full_muted_video_path = os.path.join(self.download_path, self.muted_video_file)
         full_translated_audio_path = os.path.join(self.download_path, self.translated_audio_file)
         full_translated_video_path = os.path.join(self.download_path, self.translated_video_file)
-        os.system('ffmpeg -i {} -i {} -c:v copy -c:a aac -strict experimental {}'.format(full_muted_video_path, full_translated_audio_path, full_translated_video_path))
+        os.system('ffmpeg -i {} -i {} -c:v copy -c:a aac -strict experimental -y {}'.format(full_muted_video_path, full_translated_audio_path, full_translated_video_path))
         return full_translated_video_path
